@@ -1,53 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ChallengesWithTestsMark8
 {
     public class ChallengesSet03
     {
         public bool ArrayContainsAFalse(bool[] vals)
-        {
-            throw new NotImplementedException();
-        }
+            => vals.Contains(false);
 
         public bool IsSumOfOddsOdd(IEnumerable<int> numbers)
-        {
-            throw new NotImplementedException();
-        }
+            => (numbers == null) ? false : numbers.Sum() % 2 != 0;
 
         public bool PasswordContainsUpperLowerAndNumber(string password)
         {
-            throw new NotImplementedException();
+            var isLower = false;
+            var isUpper = false;
+            var isDigit = false;
+
+            for(int i = 0; i < password.Length; i++)
+            {
+                if(char.IsLower(password[i]))
+                {
+                    isLower = true;
+                }
+
+                if(char.IsUpper(password[i]))
+                {
+                    isUpper = true;
+                }
+
+                if (char.IsDigit(password[i]))
+                {
+                    isDigit = true;
+                }
+            }
+
+            return (isLower && isUpper && isDigit) ? true : false;
         }
 
         public char GetFirstLetterOfString(string val)
-        {
-            throw new NotImplementedException();
-        }
+            => val.First();
 
         public char GetLastLetterOfString(string val)
-        {
-            throw new NotImplementedException();
-        }
+            => val.Last();
 
         public decimal Divide(decimal dividend, decimal divisor)
-        {
-            throw new NotImplementedException();
-        }
+            => (divisor == 0) ? 0 : dividend / divisor;
 
         public int LastMinusFirst(int[] nums)
-        {
-            throw new NotImplementedException();
-        }
+            => nums.Last() - nums.First();
 
         public int[] GetOddsBelow100()
         {
-            throw new NotImplementedException();
+            var list = new List<int>();
+
+            for(int i = 0; i < 100; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    list.Add(i);
+                }
+            }
+            return list.ToArray();
         }
 
         public void ChangeAllElementsToUppercase(string[] words)
+        // => words.ToList().ForEach(x => x.ToUpper()).ToArray();
         {
-            throw new NotImplementedException();
+            for(int i = 0; i < words.Length; i++)
+            {
+                words[i] = words[i].ToUpper();
+            }
         }
     }
 }

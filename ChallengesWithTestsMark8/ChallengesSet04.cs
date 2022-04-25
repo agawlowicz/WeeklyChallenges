@@ -6,8 +6,7 @@ namespace ChallengesWithTestsMark8
     public class ChallengesSet04
     {
         public int AddEvenSubtractOdd(int[] numbers)
-            => (numbers == null || numbers.Length == 0) ?
-                0 : numbers.Where(x => x % 2 == 0).Sum() - numbers.Where(x => x % 2 != 0).Sum();
+            => numbers.Where(x => x % 2 == 0).Sum() - numbers.Where(x => x % 2 != 0).Sum();
 
         public int GetLengthOfShortestString(string str1, string str2, string str3, string str4)
             => new string[] { str1, str2, str3, str4 }.Min(x => x.Length);
@@ -39,7 +38,8 @@ namespace ChallengesWithTestsMark8
         }
 
         public int Factorial(int number)
-            => (number == 1 || number == 0) ? 1 : Enumerable.Range(1, number).ToList().Aggregate((x, y) => x * y);
+            => (number == 0) ? 1 : Enumerable.Range(1, number).Aggregate((x, y) => x * y);
+        //if(number < 0 ) {throw new ArgumentOutOfRangeException();} //covered with above code
 
     }
 }
